@@ -1,17 +1,17 @@
 import React from "react";
-const details = props => {
+const detail = props => {
   return (
     <div>
-      <img src={props.details.photo} alt={props.details.surname} />
+      <img src={props.user.photo} alt={props.user.surname} />
       <p>
-        {props.details.name} {props.details.surname}
+        {props.user.name} {props.user.surname}
       </p>
-      <p>Email: {props.details.email}</p>
-      <p>Gender: {props.details.gender}</p>
-      <p>Age: {props.details.age}</p>
-      <p>Country of origin {props.details.region}</p>
+      <p>Email: {props.user.email}</p>
+      <p>Gender: {props.user.gender}</p>
+      <p>Age: {props.user.age}</p>
+      <p>Country of origin {props.user.region}</p>
     </div>
   );
 };
 
-export default details;
+export default detail;

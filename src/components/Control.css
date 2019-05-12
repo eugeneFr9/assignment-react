@@ -1,3 +1,8 @@
 button {
   cursor: pointer;
+  margin: auto;
+  position: relative;
+  margin-top: 10px;
+  left: 50%;
+  padding: 5px;
 }

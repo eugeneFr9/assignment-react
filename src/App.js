@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 import "./App.css";
-import Names from "./components/Names";
+import Name from "./components/Name/Name";
 import Control from "./components/Control";
 import axios from "axios";
-
+import Details from "./components/Details/Details";
 class App extends Component {
   state = {
     names: [],
     error: false,
-    errorMessage: null
+    errorMessage: null,
+    currentUser: null
+  };
+  showExtraInfo = id => {
+    const newNames = [...this.state.names];
+    const neededUser = newNames[id];
+    this.setState({ currentUser: neededUser });
   };
 
   fetchUsers = () => {
@@ -27,7 +33,18 @@ class App extends Component {
     return (
       <div className="mainBox">
         <Control clicked={this.fetchUsers} />
-        <Names names={this.state.names} />
+        {this.state.names
+          ? this.state.names.map((el, index) => (
+              <Name
+                key={index}
+                name={el.name}
+                clicked={() => this.showExtraInfo(index)}
+              />
+            ))
+          : null}
+        {this.state.currentUser ? (
+          <Details user={this.state.currentUser} />
+        ) : null}
         {error}
       </div>
     );
